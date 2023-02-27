@@ -1,0 +1,50 @@
+$(document).ready(function () {
+  $('#atttending-no').click(function () {
+    if (!$("input[name='atttending']:checked").val()) {
+      alert('Nothing is checked!');
+      return false;
+    }
+    else {
+      // alert('One of the radio buttons is checked!');
+      var no = $("input[name='atttending']:checked").val();
+      if (no == "No") {
+        $("#not-attending-eng").css({
+          'opacity': '0.5',
+          'height': '10px'
+        });
+        $('#not-attending-eng').attr('style', 'background-color: transparent !important');
+        $('#engagement-ceremony').attr('disabled', 'disabled');
+        $("#not-attending-eng .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after").css({
+          'opacity': '0.5',
+          'height': '10px'
+        });
+
+        $("#not-attending-wed").css({
+          'opacity' : '0.5',
+          'height' : '10px'
+       });
+       $('#not-attending-wed').attr('style', 'background-color: transparent !important');
+       $('#wedding-ceremony').attr('disabled', 'disabled');
+       $("#not-attending-wed .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after").css({
+        'opacity' : '0.5',
+        'height' : '10px'
+     });
+      }
+
+    }
+  });
+
+  //Resize window
+function myResize() {
+  if ($(window).width() < 700) {
+    $('div#event_attendance .col').removeClass('col').addClass('col-12');
+  }
+  else{
+    $('div#event_attendance .col-12').removeClass('col-12').addClass('col');
+    $(".col:nth-child(1)").removeClass('col').addClass('col-12');
+  }
+}
+
+//watch window resize
+$(window).resize(myResize);
+});
